@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Shop Online</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<style>
+  *{
+ margin-left: 50px;
+ margin-right: 50px;
+ padding: 0px;
+
+}
+
+
+h1{
+ color: #009688;
+}
+
+p{
+ text-decoration:none;
+    color:#555;
+}
+a{
+    text-decoration:none;
+    color:#555;
+}
+.btn{
+
+    display: inline-block;
+    background: #2B743B;
+    color:#fff;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    justify-content: flex-end;
+    transition: background 0.5s;
+}
+.btn:hover{
+    background: #00cc66;
+}
+.auto-style1 {
+	margin-left: 40px;
+	color: white;
+}
+.ff{
+  height: 863px;
+  right: 25px;
+  background-color: #2B743B;
+  background-image: url("/img4.jpg");
+  background-size: 100% 100%;
+}
+.topright {
+  position: right;
+  top: 16px;
+  right: 16px;
+}
+table {
+    border-collapse: collapse;
+
+}
+thead th{
+    background-color:#2B743B;
+    color:#FFFEFF;
+    font-size:15px;
+    font-weight:800;
+}
+
+th,td{
+    border: 1px solid #dddddd;
+    padding: 10px 20px;
+    font-size:14px;
+}
+td img{
+    height:40px;
+    width: 40px;
+    border-radius:100%;
+    border: 5px solid;
+}
+tr:nth-child(even){
+    background-color: #dddddd;
+}
+tr:nth-child(odd){
+    background-color: #edeef1;
+}
+tr:hover td{
+    color: #44b478;
+    cursor:pointer;
+    background-color: #FFFFFF;
+}
+</style>
+
+</head>
+<body>
+
+<div  action="#"  >
+    <div style="text-align: right" >
+        <a href="/home" class="btn"  > HOME </a>
+        <a href="/admin" class="btn"  > Admin </a>
+        <br>
+    </div>
+<br>
+  <form class="ff" th:action="@{/savemy}" th:object="${user}" method="post">
+
+
+      <p class="auto-style1">Nume:</p>
+      <p class="auto-style1"> <input type="text" th:field="*{firstName}"  style="width: 473px"/></p>
+      <p class="auto-style1">Prenume:</p>
+      <p class="auto-style1"> <input type="text" th:field="*{lastName}"  style="width: 473px"/></p>
+      <p class="auto-style1">Adresa: </p>
+      <p class="auto-style1"><input type="text" th:field="*{address}"  style="width: 473px"/></p>
+      <p class="auto-style1">Email: </p>
+      <p class="auto-style1"><input type="text" th:field="*{email}" readonly="readonly" style="width: 473px"/></p>
+      <p class="auto-style1">Parola: (introduceti din nou parola) </p>
+      <p class="auto-style1"><input type="text" th:field="*{password}"  style="width: 473px"/></p>
+      <p class="auto-style1">Rol: </p>
+      <p class="auto-style1"><input type="text" th:field="*{role}"  style="width: 473px"/></p>
+      <p class="auto-style1">Comenzi: </p>
+      <table  style="width:600px">
+          <thead>
+          <tr>
+              <th> Id</th>
+              <th> Email</th>
+              <th> Adresa</th>
+              <th> Nume</th>
+              <th> Prenume</th>
+              <th> Telefon</th>
+              <th>Data</th>
+
+
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="co : ${listCo}">
+          <tr th:each="co : ${listCo}">
+              <td th:text="${co.id}">Id</td>
+              <td th:text="${co.email}">Email</td>
+              <td th:text="${co.address}">Adresa</td>
+              <td th:text="${co.firstName}">Nume</td>
+              <td th:text="${co.lastName}">Prenume</td>
+              <td th:text="${co.telefon}">Telefon</td>
+              <td th:text="${co.datac}">Data</td>
+
+
+
+          </tr>
+
+
+          </tbody>
+
+      </table>
+        <br>
+      <button type="submit" class="btn"  > Salveaza modificarile </button>
+
+      <button class="btn"><a th:href="@{'/deletemy/' + ${user.email}}" style="color:white;">Sterge Contul</a>  </button>
+
+
+  </form>
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+Client id 7
+Client username client3
+Client name  Albu  Catalin
+Client address Bucuresti
+Client phone 0766534345
+Order id 39
+Order date 2021-05-21 15:10:10
+Order price 181
+Components: 
+Barbecued Shrimp 
+Shrimp Sates with Spiced Pistachio Chutney 
+Menu1

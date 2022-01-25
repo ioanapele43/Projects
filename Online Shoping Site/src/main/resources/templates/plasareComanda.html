@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeLeaf.org/thymLeaf-extras-springsecurity5">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Shop Online</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            font-family: Calibri, Helvetica, sans-serif;
+            background-image:url("/imgOrder.jpg");
+        }
+
+        input[type=text], input[type=password],input[type=number], textarea {
+            width: 30%;
+            padding: 15px;
+            margin: 10px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+        input[type=text]:focus, input[type=password], input[type=number]:focus {
+            background-color: orange;
+            outline: none;
+        }
+        div {
+            padding: 10px 0;
+        }
+
+        .confirmbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: auto;
+            opacity: 0.9;
+        }
+        .confirmbtn:hover {
+            opacity: 1;
+        }
+
+        .myform {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0px 10px 20px #1687d933;
+            margin-top: 100px;
+        }
+
+        .fields {
+            padding-top: 50px;
+
+        }
+
+    </style>
+</head>
+<body>
+<div class="myform" align="center">
+<form th:action="@{/salvareComanda}" th:object="${comanda}" method="post">
+        <center>  <h1> Plasare comanda</h1> </center>
+        <div class="fields">
+
+                <center> <input type="text" th:field="${comanda.firstName}" placeholder="Nume destinatar" required minlength="2" maxlength="20" class="form-control"/></center>
+                    <center><input type="text" th:field="${comanda.lastName}" placeholder="Prenume destinatar" required minlength="2" maxlength="20" class="form-control" /></center>
+                        <center> <input type="text" th:field="${comanda.address}" placeholder="Adresa destinatar" required minlength="2" maxlength="40" class="form-control" /></center>
+                            <center> <input type="number" th:field="${comanda.telefon}" placeholder="Telefon destinatar" class="form-control" /></center>
+                                    <center> <input type="text" th:field="${comanda.email}" placeholder="Email destinatar" class="form-control" /></center>
+        <center><button type="submit" class="confirmbtn">Confirmare</button></center>
+
+    </div>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeLeaf.org/thymLeaf-extras-springsecurity5">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Shop Online</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.navbar{
+    display:flex;
+    align-items: center;
+    padding: 20px;
+}
+nav{
+    flex:1;
+    text-align: right;
+}
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+nav ul li{
+    display: inline-block;
+    margin-right:20px;
+}
+a{
+    text-decoration:none;
+    color:#555;
+}
+p{
+    color:#555;
+}
+.container{
+    font-family: 'Outfit', sans-serif;
+    max-width:1300px;
+    margin:auto;
+    padding-left:25px;
+    padding-right:25px;
+}
+.row{
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+.col-1{
+    flex-basic: 50%;
+    min-width:300px;
+
+}
+body{
+    width:100%;
+    display:flex;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+}
+table {
+    border-collapse: collapse;
+
+}
+thead th{
+    background-color:#2B743B;
+    color:#FFFEFF;
+    font-size:15px;
+    font-weight:800;
+}
+
+th,td{
+    border: 1px solid #dddddd;
+    padding: 10px 20px;
+    font-size:14px;
+}
+td img{
+    height:40px;
+    width: 40px;
+    border-radius:100%;
+    border: 5px solid;
+}
+tr:nth-child(even){
+    background-color: #dddddd;
+}
+tr:nth-child(odd){
+    background-color: #edeef1;
+}
+tr:hover td{
+    color: #44b478;
+    cursor:pointer;
+    background-color: #FFFFFF;
+}
+td button{
+    border: none;
+    padding: 7px 15px;
+    border-radius: 15px;
+    background-color: black;
+    color: #FFFFFF;
+}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <nav>
+            <ul>
+                <p>[[${#httpServletRequest.remoteUser}]]</p>
+                <li><a th:href="@{/home}">Home </a></li>
+                <li><a th:href="@{/newUser}">Adauga un client </a></li>
+
+            </ul>
+        </nav>
+    </div>
+    <h1>Utilizatori sistemului:</h1>
+    <div class="row">
+        <div class="col-1">
+
+
+            <table  style="width:600px">
+                <thead>
+                    <tr>
+                        <th> Id</th>
+                        <th> Nume</th>
+                        <th>Prenume</th>
+                        <th> Email</th>
+                        <th> Password(encoded)</th>
+                        <th>Adresa</th>
+                        <th> Actiuni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user : ${listUsers}">
+                        <td th:text="${user.id}">Id</td>
+                        <td th:text="${user.firstName}">Nume</td>
+                        <td th:text="${user.lastName}">Prenume</td>
+                        <td th:text="${user.email}">Email</td>
+                        <td th:text="${user.password}">Password(encoded)</td>
+                        <td th:text="${user.address}">Adresa</td>
+                        <td>
+                            <a th:href="@{'/client/'+${user.id}}">Vezi</a>
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+            <br>
+            </div>
+        </div>
+
+    <h1>Produse:</h1>
+    <div class="row2">
+        <div class="col-2">
+
+
+            <table  style="width:600px">
+                <thead>
+                <tr>
+                    <th> Id</th>
+                    <th> Nume</th>
+                    <th>Provider</th>
+                    <th>Categorie</th>
+                    <th>Descriere</th>
+
+                    <th>Cantitate</th>
+                    <th>Pret</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="prod : ${listProd}">
+                    <td th:text="${prod.id}">Id</td>
+                    <td th:text="${prod.name}">Nume</td>
+                    <td th:text="${prod.provider}">Provider</td>
+                    <td th:text="${prod.category}">Categorie</td>
+                    <td th:text="${prod.description}">Descriere</td>
+                    <td th:text="${prod.quantity}">Cantitate</td>
+                    <td th:text="${prod.price}">Pret</td>
+
+
+                </tr>
+
+
+                </tbody>
+
+            </table>
+
+            <br>
+        </div>
+    </div>
+    <h1>Comenzi:</h1>
+    <div class="row3">
+        <div class="col-3">
+
+
+            <table  style="width:600px">
+                <thead>
+                <tr>
+                    <th> Id</th>
+                    <th> Email</th>
+                    <th> Adresa</th>
+                    <th> Nume</th>
+                    <th> Prenume</th>
+                    <th> Telefon</th>
+                    <th>Data</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="co : ${listCo}">
+                    <td th:text="${co.id}">Id</td>
+                    <td th:text="${co.email}">Email</td>
+                    <td th:text="${co.address}">Adresa</td>
+                    <td th:text="${co.firstName}">Nume</td>
+                    <td th:text="${co.lastName}">Prenume</td>
+                    <td th:text="${co.telefon}">Telefon</td>
+                    <td th:text="${co.datac}">Data</td>
+
+
+
+                </tr>
+
+
+                </tbody>
+
+            </table>
+
+            <br>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

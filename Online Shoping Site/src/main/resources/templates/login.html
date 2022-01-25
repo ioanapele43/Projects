@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Shop Online</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url('bgl.png');
+}
+.navbar{
+    display:flex;
+    align-items: center;
+    padding: 20px;
+}
+nav{
+    flex:1;
+    text-align: right;
+}
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+nav ul li{
+    display: inline-block;
+    margin-right:20px;
+}
+a{
+    text-decoration:none;
+    color:#555;
+}
+p{
+    color:#555;
+}
+.container{
+    font-family: 'Outfit', sans-serif;
+    max-width:1300px;
+    margin:auto;
+    padding-left:25px;
+    padding-right:25px;
+
+}
+.row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+.col-1{
+    flex-basic: 50%;
+    min-width:300px;
+
+
+}
+.account-page{
+    padding:50px 0;
+    background:#7FDD94;
+    background-image: url("img3.jpg");
+    background-size: 100% 100%;
+}
+.form-container{
+    background: #fff;
+
+    width:300px;
+    height:500px;
+    position:relative;
+    text-align:center;
+    padding:100px 0;
+    margin:auto;
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+.btn{
+    display: inline-block;
+    background: #2B743B;
+
+    color:#fff;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    justify-content: flex-end;
+    transition: background 0.5s;
+}
+.form-container span{
+    font-weight:bold;
+    padding: 0 10px;
+    color: #555;
+    cursor: pointer;
+    width:100px;
+    display:inline-block;
+}
+.form-btn{
+    display: inline-block;
+}
+.form-container form{
+    max-width:300px;
+    padding:0 20px;
+    position:absolute;
+    top:130px;
+    transition: transform 1s;
+}
+form input{
+    width:100%;
+    height: 30px;
+    margin: 10px 0;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+}
+form .btn{
+    width:100%;
+    border:none;
+    cursor:pointer;
+    margin: 10px 0;
+}
+form .btn:focus{
+    outline:none;
+}
+#LoginForm{
+    left:0px;
+}
+
+
+    </style>
+</head>
+<body>
+<div class="container" >
+    <div class="navbar">
+        <nav>
+            <ul>
+                <li><a th:href="@{/}">HOME</a></li>
+
+            </ul>
+        </nav>
+    </div>
+    <div class="account-page">
+        <div class="containar">
+            <div class="row">
+                <div class="col-1">
+
+                </div>
+                <div class="col-1">
+                    <div class="form-container">
+
+                        <span onclick="login()">Login</span>
+
+
+                        <br>
+
+                        <form id="LoginForm" th:action="@{/home}" th:object="${user}">
+                            <input type="email" th:field="*{email}"  placeholder="Email"  class="form-control" required />
+                            <input type="password" th:field="*{password}" placeholder="Parola" required minlength="6" maxlength="10" class="form-control"/>
+                            <button type="submit"  class="btn btn-primary"> Login</button>
+                        </form>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

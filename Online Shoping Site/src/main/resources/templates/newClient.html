@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Shop Online</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<style>
+  *{
+ margin-left: 50px;
+ margin-right: 50px;
+ padding: 0px;
+
+}
+
+
+h1{
+ color: #009688;
+}
+
+p{
+ text-decoration:none;
+    color:#555;
+}
+a{
+    text-decoration:none;
+    color:#555;
+}
+.btn{
+
+    display: inline-block;
+    background: #2B743B;
+    color:#fff;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    justify-content: flex-end;
+    transition: background 0.5s;
+}
+.btn:hover{
+    background: #00cc66;
+}
+.auto-style1 {
+	margin-left: 40px;
+	color: white;
+}
+.ff{
+  height: 863px;
+  right: 25px;
+  background-color: #2B743B;
+  background-image: url("/img4.jpg");
+  background-size: 100% 100%;
+}
+.topright {
+  position: right;
+  top: 16px;
+  right: 16px;
+}
+</style>
+
+</head>
+<body>
+
+<div  action="#"  >
+    <div style="text-align: right" >
+        <a href="@{/home}" class="btn"  > HOME </a>
+        <a href="@{/admin}" class="btn"  > Admin </a>
+        <br>
+    </div>
+<br>
+  <form class="ff" th:action="@{/saveNewUser}" th:object="${user}" method="post">
+
+
+      <p class="auto-style1">Nume:</p>
+      <p class="auto-style1"> <input type="text" th:field="*{firstName}"  style="width: 473px"/></p>
+      <p class="auto-style1">Prenume:</p>
+      <p class="auto-style1"> <input type="text" th:field="*{lastName}"  style="width: 473px"/></p>
+      <p class="auto-style1">Adresa: </p>
+      <p class="auto-style1"><input type="text" th:field="*{address}"  style="width: 473px"/></p>
+      <p class="auto-style1">Email: </p>
+      <p class="auto-style1"><input type="email" th:field="*{email}"  style="width: 473px"/></p>
+      <p class="auto-style1">Parola: </p>
+      <p class="auto-style1"><input type="text" th:field="*{password}"  style="width: 473px"/></p>
+      <p class="auto-style1">Rol: </p>
+      <p class="auto-style1"><input type="text" th:field="*{role}"  style="width: 473px"/></p>
+
+        <br>
+      <button type="submit" class="btn"  > Salveaza modificarile </button>
+
+
+
+  </form>
+
+
+</div>
+
+</body>
+</html>
